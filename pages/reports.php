@@ -33,7 +33,7 @@ switch ($action) {
                     <?php foreach($reports as $report): ?>
                         <div class="report-item">
                             <h3><?php echo htmlspecialchars($report['title']); ?></h3>
-                            <p><?php echo htmlspecialchars($report['description']); ?></p>
+                            <p><?php echo htmlspecialchars($report['description'] ?? ''); ?></p>
                             <a href="index.php?page=reports&action=view&id=<?php echo $report['id']; ?>" class="btn btn-primary">View Report</a>
                         </div>
                     <?php endforeach; ?>

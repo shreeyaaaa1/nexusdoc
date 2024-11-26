@@ -27,14 +27,15 @@ function generateReport($data) {
     try {
         // Insert report metadata
         $stmt = $conn->prepare("
-            INSERT INTO reports (user_id, title, type, from_date, to_date, created_at) 
-            VALUES (?, ?, ?, ?, ?, NOW())
+            INSERT INTO reports (user_id, title, description, type, from_date, to_date, created_at) 
+            VALUES (?, ?, ?, ?, ?, ?, NOW())
         ");
         $stmt->bindParam(1, $data['user_id'], PDO::PARAM_INT);
         $stmt->bindParam(2, $data['title'], PDO::PARAM_STR);
-        $stmt->bindParam(3, $data['type'], PDO::PARAM_STR);
-        $stmt->bindParam(4, $data['from_date'], PDO::PARAM_STR);
-        $stmt->bindParam(5, $data['to_date'], PDO::PARAM_STR);
+        $stmt->bindParam(3, $data['description'], PDO::PARAM_STR);
+        $stmt->bindParam(4, $data['type'], PDO::PARAM_STR);
+        $stmt->bindParam(5, $data['from_date'], PDO::PARAM_STR);
+        $stmt->bindParam(6, $data['to_date'], PDO::PARAM_STR);
         $stmt->execute();
         $report_id = $conn->lastInsertId();
         
