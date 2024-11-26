@@ -1,5 +1,6 @@
 <?php
 require_once dirname(__FILE__) . '/init.php';
+global $conn;
 
 function getReports($user_id) {
     global $conn;
@@ -34,7 +35,7 @@ function generateReport($data) {
     
     try {
         // Insert report metadata
-        $stmt = $db->prepare("
+        $stmt = $conn->prepare("
             INSERT INTO reports (user_id, title, type, from_date, to_date, created_at) 
             VALUES (?, ?, ?, ?, ?, NOW())
         ");
